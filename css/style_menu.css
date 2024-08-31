@@ -1,0 +1,234 @@
+body {
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(45deg, #6b6b6b, #2b0609c5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    color: #ffffff;
+}
+
+.menu {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    width: 90%;
+    max-width: 1000px;
+    perspective: 1000px;
+}
+
+
+
+.menu .card {
+    background-color: #262626;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.7);
+    transition: transform 0.3s ease, background-color 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    position: relative;
+    transform-style: preserve-3d;
+    background-size: cover;
+    background-position: center;
+    color: #ffffff;
+    background-repeat: no-repeat;
+}
+
+.menu .card i {
+    font-size: 60px;
+    margin-bottom: 15px;
+    color: #0e87ab;
+}
+
+
+
+.menu .card:hover {
+    transform: rotateY(15deg) translateZ(10px);
+    background-color: #127b04;
+    
+
+}
+
+
+.menu .card[data-icon='filtro'] {
+    background-image: url('https://cdn-icons-png.flaticon.com/512/786/786279.png');
+    font-size: 28px;
+    color: #22c933;
+    margin-bottom: 0px;
+
+}
+.menu .card[data-icon='database'] {
+    background-image: url('https://cdn-icons-png.flaticon.com/512/64/64572.png');
+    font-size: 28px;
+    color: #22c933;
+    margin-bottom: 0px;
+
+}
+.menu .card[data-icon='plus'] {
+    background-image: url('https://cdn-icons-png.flaticon.com/512/1828/1828906.png');
+    font-size: 28px;
+    color: #22c933;
+    margin-bottom: 0px;
+
+}
+.menu .card[data-icon='tools'] {
+    background-image: url('https://cdn-icons-png.flaticon.com/512/1828/1828970.png');
+    font-size: 28px;
+    color: #22c933;
+    margin-bottom: 0px;
+
+}
+
+.menu .card[data-icon='globe'] {
+    background-image: url('https://cdn-icons-png.flaticon.com/512/15/15318.png');
+    font-size: 28px;
+    color: #22c933;
+    margin-bottom: 0px;
+
+}
+
+.menu .card[data-icon='ellipsis'] {
+    background-image: url('https://cdn-icons-png.flaticon.com/512/545/545684.png');
+    font-size: 28px;
+    color: #22c933;
+    margin-bottom: 0px;
+
+}
+
+
+.menu .card .title {
+    font-size: 22px;
+    font-weight: 600;
+    color: #fa1dc2;
+}
+
+
+
+
+.description{
+    display: none;
+}
+
+.menu .card .description {
+    font-size: 16px;
+    font-weight: 500;
+    margin-top: 5px;
+    color: #f9711c;
+}
+
+.menu .card:hover .description {
+    font-size: 18px;
+    font-weight: 600;
+    margin-top: 5px;
+    color: #f97840;
+
+     display: flex; /*Muestra el elemento durante el hover */ 
+}
+
+.menu .card:hover .title {
+    font-size: 23px;
+    color: #fa1dc2;
+}
+
+/* Estilos para el modal */
+.modal {
+    display: none; /* Oculto por defecto */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.modal-content {
+    background-color: #fffeff82;
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.7);
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 25px;
+    width: 90%;
+    max-width: 600px;
+    color: #ffffff;
+    position: relative;
+}
+
+.modal-content .sub-card {
+    background-color: #262626;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.7);
+    transition: transform 0.3s ease, background-color 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    position: relative;
+    color: #ffffff;
+    cursor: pointer;
+}
+
+.modal-content .sub-card i {
+    font-size: 40px;
+    margin-bottom: 15px;
+    color: #0e87ab;
+}
+
+.modal-content .sub-card:hover {
+    transform: scale(1.05);
+    background-color: #127b04;
+}
+
+.modal-content .close {
+    position: absolute;
+    top: -45px;
+    right: 100px;
+    font-size: 45px;
+    color: #f11e1e;
+    cursor: pointer;
+}
+
+@media (max-width: 768px) {
+    .menu {
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
+}
+
+@media (max-width: 480px) {
+    .menu .card i {
+        font-size: 40px;
+    }
+
+    .menu .card .title {
+        font-size: 18px;
+    }
+
+    .menu .card .description {
+        font-size: 14px;
+    }
+
+    .modal-content .sub-card i {
+        font-size: 30px;
+    }
+
+    .modal-content .sub-card .title {
+        font-size: 16px;
+    }
+
+    .modal-content .sub-card .description {
+        font-size: 12px;
+    }
+}
+

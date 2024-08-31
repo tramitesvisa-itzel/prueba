@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style_menu.css">
+    <link rel="icon" href="images/client_ico_256.ico" type="image/x-icon">
+    <title>Menú Interactivo</title>
+    <!-- Favicon -->
+    <!-- Google Fonts -->
+    <!-- CSS -->
+
+</head>
+
+</head>
+
+<body>
+    <div class="menu">
+        <div class="card" data-icon="filtro" onclick="openFilterModal()">
+            <i class="fas fa-filter"></i>
+            <div class="title">Filtros de Datos</div>
+            <div class="description">Filtra la información que necesitas de manera sencilla.</div>
+        </div>
+        <!-- <div class="card" data-icon="database" onclick="window.location.href='admin_table/table.html'">
+            <i class="fas fa-database"></i>
+            <div class="title">Todos los Registros</div>
+            <div class="description">Accede a todos los registros disponibles en la base de datos.</div>
+        </div> -->
+        <div class="card" data-icon="plus" onclick="openModal()">
+            <i class="fas fa-plus-circle"></i>
+            <div class="title">Agregar</div>
+            <div class="description">Añade nuevos registros de manera rápida y sencilla.</div>
+        </div>
+        <div class="card" data-icon="tools" onclick="herramientas()">
+            <i class="fas fa-tools"></i>
+            <div class="title">Herramientas</div>
+            <div class="description">Utiliza diferentes herramientas para optimizar tu trabajo.</div>
+        </div>
+        <div class="card" data-icon="globe" onclick="miPaginaWeb()">
+            <i class="fas fa-globe"></i>
+            <div class="title">Mi Página Web</div>
+            <div class="description">Explora y comparte tu sitio web para que mas personas te conoscan.</div>
+        </div>
+
+        <!-- <div class="card" data-icon="ellipsis" onclick="otros()">
+            <i class="fas fa-ellipsis-h"></i>
+            <div class="title">Otros</div>
+            <div class="description">Explora otras opciones y herramientas disponibles.</div>
+        </div> -->
+    </div>
+
+
+
+    <!-- Modal para Filtrar Datos -->
+    <div class="modal" id="filterModal">
+        <div class="modal-content">
+            <span class="close" onclick="closeFilterModal()">&times;</span>
+            <div class="sub-card" onclick="window.location.href='pag/filtro.html'">
+                <i class="fas fa-filter"></i>
+                <div class="title">Filtro Selectivo</div>
+                <div class="description">Obtener resultados específicos.</div>
+            </div>
+            <div class="sub-card" onclick="window.location.href='pag/table.html'">
+                <i class="fas fa-list"></i>
+                <div class="title">Todos los Registros</div>
+                <div class="description">Ver todos los registros.</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal" id="myModal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <div class="sub-card" onclick="window.location.href='pag/add_client.html'">
+                <i class="fas fa-user-plus"></i>
+                <div class="title">Cliente Nuevo</div>
+                <div class="description">Añade un nuevo cliente.</div>
+            </div>
+            <div class="sub-card" onclick="window.location.href='pag/add_gestor.html'">
+                <i class="fas fa-user-cog"></i>
+                <div class="title">Gestor Nuevo</div>
+                <div class="description">Añade un nuevo gestor.</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal para Herramientas -->
+    <div class="modal" id="toolsModal">
+        <div class="modal-content">
+            <span class="close" onclick="closeToolsModal()">&times;</span>
+            
+            <div class="sub-card" onclick="copyFormURL()">
+                <i class="fas fa-link"></i>
+                <div class="title">Copiar URL Formulario</div>
+                <div class="description">Copia la URL del formulario.</div>
+            </div>
+            <div class="sub-card" onclick="linkOtherParams()">
+                <i class="fas fa-cogs"></i>
+                <div class="title">Vincular Otros Parámetros</div>
+                <div class="description">Configura otros parámetros.</div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+    <!-- Font Awesome -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/js/all.min.js"></script>
+    <script src="jsp/script_menu.js"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,990 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+
+/* General Styles */
+body {
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+    background-image: linear-gradient(100deg, #000000, #00000061), url(client_ico_256.ico);
+    color: rgba(46, 193, 241, 0.825);
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+/* Sidebar Styles */
+.sidebar {
+    width: 80px;
+    background-color: #283848;
+    color: #fff;
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px 0;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+}
+
+.sidebar a {
+    color: #fff;
+    text-decoration: none;
+    margin: 15px 0;
+    text-align: center;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.sidebar a:hover {
+    background-color: #0778e9;
+    border-radius: 8px;
+    color: #ecf0f1;
+}
+
+.sidebar a i {
+    font-size: 24px;
+}
+
+.sidebar span {
+    display: block;
+    font-size: 12px;
+    margin-top: 5px;
+}
+
+/* Button Styles */
+.btn-sidebar {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 9px;
+    cursor: pointer;
+    background-color: #007bff00;
+    color: white;
+    font-size: 20px;
+}
+
+button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    background-color: #007bff;
+    color: white;
+    font-size: 14px;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+button:disabled {
+    background-color: rgb(255, 255, 255);
+    cursor: not-allowed;
+}
+
+/* Content and Layout
+.content {
+    margin-left: 80px;
+    /* Adjusted to account for sidebar width *
+    padding: 20px;
+    flex: 1;
+} */
+
+.main-container {
+    display: flex;
+    flex-direction: column;
+    /* Stack content vertically on small screens */
+    gap: 20px;
+    width: 100%;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+/* Header Styles */
+header {
+    display: flex;
+    justify-content: space-between;
+    /* Distribute space between left and right sections */
+    align-items: center;
+    /* Align items vertically in the center */
+    padding: 20px;
+    background-color: #3498db;
+    color: rgb(255, 255, 255);
+    border-radius: 12px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    background-image: linear-gradient(100deg, #000000, #00000020), url(client_ico_256.ico);
+    background-size: cover;
+    background-position: center;
+    border-bottom: 1px solid #2980b9;
+    flex-wrap: wrap;
+    /* Allow wrapping of content on smaller screens */
+}
+
+/* Left Side of the Header */
+.header-left {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    /* Space between logo and text */
+}
+
+.header-left .logo {
+    width: 50px;
+    /* Adjust logo size as needed */
+    height: auto;
+}
+
+.header-left h1.cabeza {
+    margin: 0;
+    /* Remove default margin */
+    font-size: 1.5rem;
+    /* Adjust font size */
+}
+
+/* Right Side of the Header */
+.header-right {
+    text-align: right;
+    /* Align text to the right */
+}
+
+.header-right h1 {
+    margin: 0;
+    /* Remove default margin */
+    font-size: 1.2rem;
+    /* Adjust font size */
+}
+
+.header-right h2 {
+    margin: 5px 0;
+    /* Adjust margin for spacing */
+    font-size: 1rem;
+    /* Adjust font size */
+}
+
+.header-right #totalRegistros {
+    font-weight: bold;
+    /* Emphasize the total count */
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    header {
+        padding: 15px;
+        flex-direction: column;
+        /* Stack items vertically on smaller screens */
+        text-align: center;
+        /* Center text for better readability */
+    }
+
+    .header-left,
+    .header-right {
+        width: 100%;
+        /* Make sections full-width */
+        margin-bottom: 10px;
+        /* Space between header sections */
+    }
+
+    .header-left {
+        flex-direction: column;
+        /* Stack logo and text vertically */
+        align-items: center;
+        /* Center-align items */
+    }
+
+    .header-left .logo {
+        width: 40px;
+        /* Adjust logo size for smaller screens */
+    }
+
+    .header-right h1,
+    .header-right h2 {
+        font-size: 1rem;
+        /* Adjust font size for smaller screens */
+    }
+}
+
+@media (max-width: 480px) {
+    header {
+        padding: 10px;
+    }
+
+    .header-left .logo {
+        width: 30px;
+        /* Further reduce logo size */
+    }
+
+    .header-left h1.cabeza {
+        font-size: 1.2rem;
+        /* Adjust font size */
+    }
+
+    .header-right h1 {
+        font-size: 1rem;
+        /* Adjust font size */
+    }
+
+    .header-right h2 {
+        font-size: 0.9rem;
+        /* Adjust font size */
+    }
+}
+
+
+/* Filter Section */
+.filter-section {
+    color: #ecd76d;
+    display: none;
+    margin-bottom: 20px;
+    background-color: #fff;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.filter-section label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: 500;
+}
+
+.filter-section input,
+.filter-section select {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 3px solid rgb(30, 5, 250);
+    border-radius: 4px;
+}
+
+/* Table Section */
+.table-section {
+    margin-bottom: 20px;
+    overflow-x: auto;
+    /* Enable horizontal scroll on smaller screens */
+}
+
+#formTable #detailsTable {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+#formTable th,
+#formTable td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid rgb(220, 15, 15);
+}
+
+#formTable th {
+    background-color: #000102;
+    color: #fff;
+}
+
+#formTable tr:hover {
+    background-color: #f1f1f1;
+}
+
+/* Responsive Design for Table */
+@media (max-width: 768px) {
+    #formTable {
+        font-size: 14px;
+        /* Adjust font size for smaller screens */
+    }
+
+    #formTable th,
+    #formTable td {
+        padding: 10px;
+        /* Adjust padding for smaller screens */
+    }
+}
+
+@media (max-width: 480px) {
+    #formTable {
+        font-size: 12px;
+        /* Further adjust font size */
+    }
+
+    #formTable th,
+    #formTable td {
+        padding: 8px;
+        /* Further adjust padding */
+    }
+}
+
+
+/* Table Section */
+.table-section {
+    margin-bottom: 20px;
+}
+
+.table-section table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.table-section th,
+.table-section td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+.table-section th {
+    background-color: #000102;
+    color: #fff;
+}
+
+
+/* Details Section */
+.details-section {
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    background-color: #fff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    display: block;
+}
+
+.details-section h2 {
+    margin-top: 0;
+}
+
+/* Action Buttons */
+.action-buttons {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+    /* Allow buttons to wrap on smaller screens */
+}
+
+.action-buttons button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    color: #fff;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.action-buttons #backButton {
+    background-color: #e74c3c;
+}
+
+.action-buttons #backButton:hover {
+    background-color: #c0392b;
+}
+
+.action-buttons #deleteButton {
+    background-color: #e67e22;
+}
+
+.action-buttons #deleteButton:hover {
+    background-color: #d35400;
+}
+
+.action-buttons #downloadButton {
+    background-color: #2ecc71;
+}
+
+.action-buttons #downloadButton:hover {
+    background-color: #27ae60;
+}
+
+/* Media Queries */
+@media (max-width: 1200px) {
+    .content {
+        margin-left: 80px;
+        /* Keep margin for smaller screens */
+    }
+}
+
+@media (max-width: 991px) {
+    .sidebar {
+        width: 60px;
+        /* Reduce sidebar width */
+    }
+
+    .content {
+        margin-left: 60px;
+        /* Adjust margin accordingly */
+    }
+
+    .main-container {
+        flex-direction: column;
+        /* Stack content vertically */
+    }
+
+    .header {
+        flex-direction: column;
+        align-items: center;
+        padding: 10px;
+    }
+
+    .header-left {
+        margin-bottom: 10px;
+    }
+
+    .header h1.cabeza {
+        font-size: 20px;
+    }
+}
+
+@media (max-width: 767px) {
+    .sidebar {
+        width: 100%;
+        height: auto;
+        position: static;
+        box-shadow: none;
+    }
+
+    .content {
+        margin-left: 0;
+        /* Reset margin for mobile */
+    }
+
+    .main-container {
+        padding: 10px;
+    }
+
+    .header {
+        flex-direction: column;
+        padding: 10px;
+    }
+
+    .header-left {
+        margin-bottom: 10px;
+    }
+
+    .header h1.cabeza {
+        font-size: 18px;
+    }
+
+    .filter-section,
+    .table-section,
+    .details-section {
+        padding: 10px;
+        margin-bottom: 15px;
+    }
+
+    button {
+        padding: 8px 15px;
+        font-size: 12px;
+    }
+}
+
+/* Dropdown Menu */
+.dropdown-menu {
+    position: absolute;
+    background-color: rgb(36, 21, 238);
+    border: 1px solid #ccc;
+    list-style: none;
+    padding: 10px;
+    margin: 0;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+    width: 200px;
+    /* Fixed width for consistency */
+}
+
+.dropdown-item {
+    padding: 8px 12px;
+    /* Adjust padding for better touch targets */
+    cursor: pointer;
+    color: #fff;
+    text-decoration: none;
+}
+
+.dropdown-item:hover {
+    background-color: #f0f0f0;
+    color: #000;
+}
+
+/* Form Styles */
+label {
+    display: block;
+    margin-bottom: 8px;
+    /* Reduced margin for tighter spacing */
+    font-weight: bold;
+    font-size: 14px;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="date"],
+select,
+textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 12px;
+    /* Adjusted for better spacing */
+    border: 1px solid rgb(221, 221, 221);
+    border-radius: 4px;
+    box-sizing: border-box;
+    font-size: 14px;
+    /* Consistent font size for form elements */
+}
+
+/* Table Styles */
+table {
+    background-image: linear-gradient(100deg, #162601, #030b00), url(client_ico_256.ico);
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+
+th,
+td {
+    text-align: left;
+    padding: 10px;
+    border-bottom: 1px solid rgb(24, 234, 5);
+    font-size: 14px;
+    /* Consistent font size for table elements */
+}
+
+th {
+    background-color: #000001;
+    color: #ecf1ec;
+}
+
+tr:hover {
+    background-color: #f1f1f1;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .sidebar {
+        width: 60px;
+        padding: 15px 0;
+    }
+
+    .sidebar a i {
+        font-size: 20px;
+    }
+
+    .sidebar a span {
+        display: none;
+        /* Hide text in sidebar for smaller screens */
+    }
+
+    .content {
+        margin-left: 60px;
+        /* Adjust margin to fit the smaller sidebar */
+    }
+
+    .dropdown-menu {
+        width: 100%;
+        /* Full width for dropdown on smaller screens */
+    }
+
+    .filter-section,
+    .table-section,
+    .details-section {
+        padding: 10px;
+    }
+
+    label {
+        margin-bottom: 6px;
+        /* Adjust margin for smaller screens */
+    }
+
+    input[type="text"],
+    input[type="email"],
+    input[type="date"],
+    select,
+    textarea {
+        margin-bottom: 8px;
+        /* Adjusted for tighter spacing */
+    }
+
+    button {
+        width: 100%;
+        margin-bottom: 10px;
+        padding: 12px;
+        font-size: 16px;
+        /* Larger button text for touch screens */
+    }
+}
+
+@media (max-width: 480px) {
+    header {
+        padding: 10px;
+        font-size: 14px;
+    }
+
+    .dropdown-menu {
+        width: 100%;
+        /* Ensure dropdown fits on small screens */
+    }
+
+    .filter-section,
+    .table-section,
+    .details-section {
+        padding: 8px;
+        /* Reduced padding for very small screens */
+    }
+
+    .action-buttons button {
+        padding: 8px 16px;
+        font-size: 14px;
+    }
+}
+
+
+/* Main Layout */
+main {
+    background-image: linear-gradient(100deg, #000000, #00000020), url(client_ico_256.ico);
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+}
+
+/* Sections */
+.filter-section,
+.table-section,
+.details-section {
+    background: rgba(48, 3, 53, 0.341);
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+    flex: 1;
+    /* Ensure sections take available space */
+}
+
+
+.footer {
+    background-color: #f1f1f1; /* Color de fondo para el footer */
+    padding: 0px; /* Espaciado interno */
+    display: flex; /* Usar Flexbox para el layout del footer */
+    justify-content: space-between; /* Distribuir el espacio entre los elementos */
+    align-items: flex-start; /* Alinear los elementos en la parte superior */
+}
+
+.social-media {
+    display: flex;
+    flex-direction: column; /* Alinear los elementos en columna */
+    align-items: center,center; /* Centrar los elementos en el eje horizontal */
+    flex: 1; /* Permitir que esta sección use el espacio disponible */
+    margin-right: 1px; /* Espacio a la derecha para separar del contenido a la derecha */
+}
+
+.icons {
+    display: flex;
+    align-items: center;
+    justify-content: center; /* Centrar los íconos horizontalmente */
+    flex-wrap: wrap; /* Permitir que los íconos se envuelvan si es necesario */
+}
+
+.icons img {
+    margin-right: 1px; /* Espacio entre los íconos */
+}
+
+.icons a {
+    margin-right: 1px; /* Espacio entre los íconos */
+}
+
+.col-lg-4 {
+    display: inline-block;
+    flex-direction: column;
+    align-items: flex-end; /* Alinear el contenido a la derecha */
+    text-align: right; /* Alinear el texto a la derecha */
+    flex: 1; /* Permitir que esta sección use el espacio disponible */
+}
+
+.footer-logo {
+    margin-top: 1px; /* Espacio arriba del logo */
+}
+
+.footer-logo img {
+    width: 45px; /* Ajustar tamaño del logo si es necesario */
+    height: auto;
+}
+
+
+/* General Styles */
+footer,
+.footer {
+    background-color: rgb(9, 8, 8);
+    color: #fff;
+    padding: 0px;
+    font-family: 'Arial', sans-serif;
+    position: relative;
+    width: 100%;
+}
+
+.social-media {
+    text-align: center;
+    margin: 2px 0;
+}
+
+.social-media h2 {
+    margin-bottom: 15px;
+    font-size: 1.0em;
+}
+
+.social-media .icons a {
+    margin: 0 10px;
+    text-decoration: none;
+    transition: transform 0.3s ease;
+}
+
+.social-media .icons a:hover i {
+    transform: scale(1.2);
+}
+
+/* Icon Colors */
+.fab.fa-facebook {
+    color: #3b5998;
+}
+
+.fab.fa-instagram {
+    color: #E1306C;
+}
+
+.fab.fa-whatsapp {
+    color: #25D366;
+}
+
+.fab.fa-facebook-messenger {
+    color: #0078FF;
+}
+
+/* Footer Content */
+.footer-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+    flex-wrap: wrap;
+}
+
+.footer-text {
+    text-align: center;
+}
+
+.footer-text p {
+    margin: 5px 0;
+    font-size: 0.9em;
+    line-height: 1.4em;
+}
+
+.footer-text p:first-child {
+    font-weight: bold;
+}
+
+.footer-logo {
+    margin-left: 10px;
+}
+
+.logo-img {
+    height: 40px;
+    width: auto;
+}
+
+/* Copyright Text */
+.copyright_text {
+    text-align: left;
+    font-size: 0.9em;
+    color: #bbb;
+    margin: 0;
+}
+
+.copyright_text a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.copyright_text a:hover {
+    color: #ddd;
+    text-decoration: underline;
+}
+
+/* Media Queries */
+@media (max-width: 991px) {
+    .footer-content {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    .footer-text,
+    .footer-logo {
+        margin-bottom: 10px;
+        margin-left: 0;
+    }
+
+    .copyright_text {
+        text-align: center;
+        padding: 10px 0;
+    }
+}
+
+@media (max-width: 767px) {
+    .social-media h2 {
+        font-size: 1.2em;
+    }
+
+    .social-media .icons a {
+        margin: 0 5px;
+    }
+
+    .filter-section,
+    .table-section {
+        padding: 15px;
+        margin-bottom: 15px;
+    }
+
+    select {
+        width: 100%;
+        max-width: 200px;
+    }
+}
+
+
+
+/* Select Element */
+select {
+    width: 100%;
+    max-width: 200px;
+}
+
+/* Action Buttons */
+.action-buttons button {
+    margin: 5px;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: #007bff;
+    color: white;
+    cursor: pointer;
+    font-size: 1em;
+}
+
+.action-buttons button:hover {
+    background-color: #0056b3;
+}
+
+/* Hidden Elements */
+.hidden {
+    display: none;
+}
+
+/* Filter and Table Sections */
+.filter-section,
+.table-section {
+    display: block;
+    width: 100%;
+    box-sizing: border-box;
+    /* Ensure padding and border are included in the element's total width and height */
+}
+
+.menu-btn {
+    position: fixed;
+    top: 5px;
+    left: 40px;
+    font-size: 30px;
+    background: none;
+    border: none;
+    color: rgb(87, 246, 7);
+    box-shadow: 0 5px 10px rgba(17, 239, 220, 0.635);
+    cursor: pointer;
+    padding: 10px;
+    z-index: 2;
+}
+
+/* Estilos básicos para el menú hamburguesa y la barra lateral */
+.menu-btn {
+    position: fixed;
+    top: 10px;
+    left: 10px;
+    z-index: 1000;
+    background: #333;
+    color: #fff;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+}
+
+.menu-icon {
+    font-size: 24px;
+}
+
+.sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 75px;
+    height: 100%;
+    background: #333;
+    color: #fff;
+    transform: translateX(-100%);
+    transition: transform 0.3s ease;
+    z-index: 999;
+    display: flex;
+    flex-direction: column;
+}
+
+.sidebar.show {
+    transform: translateX(0);
+}
+
+.sidebar .btn-sidebar {
+    background: none;
+    border: none;
+    color: #fff;
+    padding: 15px;
+    text-align: center;
+    cursor: pointer;
+}
+
+.sidebar .btn-sidebar:hover {
+    background: #444;
+}
+
+/* Ajustes para el footer */
+.footer {
+    background: #050000;
+    padding: 20px;
+    text-align: center;
+}
+
+.footer .social-media {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.footer .icons {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-bottom: 10px;
+}
+
+.footer .footer-logo {
+    margin-top: 10px;
+}
+
+.footer .footer-logo p {
+    margin: 5px 0;
+}
+
+.footer .footer-logo a {
+    color: #333;
+    text-decoration: none;
+}
+
+.footer .footer-logo img {
+    margin-top: 10px;
+}

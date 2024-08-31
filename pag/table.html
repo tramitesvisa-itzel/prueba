@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/style_table.css">
+    <script type="module" src="../jsp/scrip_table_admin.js" defer></script>
+    <script type="module" src="../jsp/scrip_table_action.js" defer></script>
+    <title>Panel de Administración</title>
+    
+    <style>
+        
+    </style>
+    
+</head>
+
+<body>
+    <!-- Botón de menú hamburguesa -->
+    <button class="menu-btn" id="menuBtn">
+        <span class="menu-icon">&#9776;</span> <!-- Icono de menú hamburguesa -->
+    </button>
+    <div class="container">
+        <div class="sidebar" id="sidebar">
+             <button id="btnRegresar" onclick="window.history.back()">Regresar</button>
+            <button id="btnInicio">Inicio</button>
+            <button id="btnEliminarTodo">Eliminar Todo</button>
+            <button id="btnDescargarTodo">Descargar Todo</button>
+        </div>
+        <div class="content" id="content">
+            <div class="logo">
+                <h1>Panel de Administración de Formularios</h1>
+                <img src="../images/client_ico_256.ico" alt="Icono" class="icon">
+     
+            </div>
+            <div class="total-info">
+                <span>Total de Registros:</span> <span id="totalRegistros">0</span>
+            </div>
+            <section>
+                <table id="formTable">
+                    <thead>
+                        <tr>
+                            <!-- Encabezado de la tabla -->
+                            <th>Fecha Creación</th>
+                            <th>Tipo de Solicitud</th>
+                            <th>Nombre</th>
+                            <th>Teléfono</th>
+                            <th>Correo</th>
+                            <th>Fecha Última Visita a USA</th>
+                            <th>Duración en USA</th>
+                            <th>Cantidad de Días/Meses</th>
+                            <th>Imagen Frente</th>
+                            <th>Imagen Reverso</th>
+                            <th>Acta de Nacimiento</th>
+                            <th>Pasaporte</th>
+                            <th>INE</th>
+                            <th>Archivo</th>
+                            <th>Apellido Paterno</th>
+                            <th>Apellido Materno</th>
+                            <th>Nombres</th>
+                            <th>Fecha Nacimiento</th>
+                            <th>Sexo</th>
+                            <th>Lugar Nacimiento</th>
+                            <th>Estado Civil</th>
+                            <th>Nombre Cónyuge</th>
+                            <th>Fecha Nacimiento Cónyuge</th>
+                            <th>Lugar Nacimiento Cónyuge</th>
+                            <th>Nombre Completo de la Expareja</th>
+                            <th>Fecha de la Unión Matrimonial con la Expareja</th>
+                            <th>Lugar de Nacimiento de la Expareja</th>
+                            <th>Motivo de la Separación</th>
+                            <th>Fecha de Disolución del Matrimonio</th>
+                            <th>País de Disolución del Matrimonio</th>
+                            <th>Nombre Completo del Cónyuge Union Libre</th>
+                            <th>Fecha de Nacimiento del Cónyuge Union Libre</th>
+                            <th>Lugar de Nacimiento del Cónyuge Union Libre</th>
+                            <th>Escolaridad</th>
+                            <th>Nombre Escuela</th>
+                            <th>Dirección Escuela</th>
+                            <th>Fecha Inicio Escuela</th>
+                            <th>Fecha Final Escuela</th>
+                            <th>Ocupación Actual</th>
+                            <th>Nombre Empresa Actual</th>
+                            <th>Domicilio Empresa Actual</th>
+                            <th>Fecha Inicio Empleo Actual</th>
+                            <th>Teléfono Empresa Actual</th>
+                            <th>Salario Mensual</th>
+                            <th>Descripción de Actividades a su Cargo</th>
+                            <th>Nombre Empresa Anterior</th>
+                            <th>Domicilio Empresa Anterior</th>
+                            <th>Fecha Inicio Empleo Anterior</th>
+                            <th>Fecha Fin Empleo Anterior</th>
+                            <th>Descripción de Actividades a su Cargo Empleo Anterior</th>
+                            <th>Nombre Jefe Inmediato</th>
+                            <th>Teléfono de Contacto</th>
+                            <th>Nombre Completo Padre</th>
+                            <th>Fecha Nacimiento Padre</th>
+                            <th>Padre Vive en USA</th>
+                            <th>Nombre Completo Madre</th>
+                            <th>Fecha Nacimiento Madre</th>
+                            <th>Madre Vive en USA</th>
+                            <th>Facebook</th>
+                            <th>Instagram</th>
+                            <th>Familiares en USA</th>
+                            <th>Nombre Familiar Cercano</th>
+                            <th>Teléfono Familiar Cercano</th>
+                            <th>Domicilio Familiar Cercano</th>
+                            <th>Visa Anterior</th>
+                            <th>Descripción Procedimiento</th>
+                            <th>Visitas a USA</th>
+                            <th>Fecha Visita a USA</th>
+                            <th>Viajes al Extranjero Últimos 5 Años</th>
+                            <th>País</th>
+                            <th>Domina Inglés</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- Aquí se llenarán los datos de los formularios -->
+                    </tbody>
+                </table>
+            </section>
+        </div>
+    </div>
+
+    <script type="module" defer>
+
+        
+
+
+
+    </script>
+    <script>
+        // JavaScript para alternar el menú lateral
+        document.getElementById('menuBtn').addEventListener('click', function() {
+            var sidebar = document.getElementById('sidebar');
+            var content = document.getElementById('content');
+            sidebar.classList.toggle('show');
+            content.classList.toggle('shift');
+        });
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.17.0/xlsx.full.min.js"></script>
+</body>
+
+</html>
