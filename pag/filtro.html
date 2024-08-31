@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <script type="module" src="../jsp/scrip_filtro_admin.js" defer></script>
+    <title>Administración de Formularios</title>
+    <style>
+       /* Global Styles */
+body {
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+    background-image: linear-gradient(100deg, #000000, #00000061), url(client_ico_256.ico);
+    color: rgba(46, 193, 241, 0.825);
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    overflow-x: hidden;
+}
+
+header, footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    background-color: #3498db;
+    color: rgb(255, 255, 255);
+    border-radius: 12px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    background-image: linear-gradient(100deg, #000000, #00000020), url(client_ico_256.ico);
+    background-size: cover;
+    background-position: center;
+    border-bottom: 1px solid #2980b9;
+    flex-wrap: wrap;
+}
+
+.header-left, .header-right {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
+
+.logo {
+    width: 50px;
+    height: auto;
+}
+
+.content {
+    padding: 10px;
+}
+
+h1, h2 {
+    margin: 0;
+    padding: 0;
+}
+
+/* Mejoras para la sección de filtros */
+.filter-section {
+    background: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    margin-bottom: 45px;
+}
+
+.filter-section h2 {
+    margin-bottom: 20px;
+    font-size: 1.5em;
+    color: #333;
+}
+
+.filter-section label {
+    font-weight: 500;
+    margin-bottom: 5px;
+    display: block;
+    color: #555;
+}
+
+.filter-section select {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 1em;
+    color: #333;
+    box-sizing: border-box;
+    background-color: #f9f9f9;
+}
+
+
+
+.filter-section select:focus {
+    border-color: #3498db;
+    outline: none;
+    box-shadow: 0 0 5px rgba(52, 152, 219, 0.2);
+}
+
+@media (max-width: 768px) {
+    header, footer {
+        padding: 10px;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .header-left, .header-right {
+        width: 100%;
+        margin-bottom: 10px;
+    }
+
+    .header-left h1, .header-right h1, .header-right h2 {
+        font-size: 1.2em;
+    }
+
+    .filter-section {
+        padding: 15px;
+    }
+
+    .filter-section h2 {
+        font-size: 1.2em;
+    }
+
+    .filter-section label {
+        font-size: 0.9em;
+    }
+
+    .filter-section select {
+        font-size: 0.9em;
+        padding: 8px;
+    }
+
+    .btn-sidebar, .btn-filter {
+        font-size: 1.2em;
+        margin: 5px;
+    }
+}
+
+/* Details Section */
+.details-section {
+    display: none;
+}
+
+.munus {
+    position: relative;
+    bottom: 0;
+    width: 100%;
+    background-color: rgba(112, 7, 65, 0.999);
+    color: white;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: center;
+    padding: 0px;
+    box-sizing: border-box;
+}
+
+.btn-sidebar, .btn-filter {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 1.5em;
+    cursor: pointer;
+    padding: 10px;
+}
+
+.btn-sidebar span {
+    display: none;
+}
+
+.btn-filter {
+    font-size: 1.2em;
+}
+
+.sidebar {
+    display: flex;
+    flex-direction: column;
+}
+
+.sidebar button {
+    display: block;
+}
+
+.sidebar.show {
+    display: block;
+}
+
+.sidebar.hide {
+    display: none;
+}
+/* Details Section */
+.details-section {
+    display: none;
+}
+
+.filter-section {
+    display: none;
+}
+
+.menu-btn {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 1.5em;
+    cursor: pointer;
+    padding: 10px;
+}
+
+    </style>
+</head>
+<body>
+    <div class="content">
+        <button id="btnRegresar" onclick="window.history.back()">Regresar</button>
+        <header class="header">
+            <div class="header-left">
+                <img src="../images/client_ico_256.ico" alt="Logotipo" class="logo">
+                <h1>Administración de Formularios</h1>
+            </div>
+            <div class="header-right">
+                <p id="datetime"></p>
+                <h1>Registros de Formularios</h1>
+                <h2>Total de Registros: <span id="totalRegistros">0</span></h2>
+            </div>
+        </header>
+
+        <aside class="sidebar hide">
+            <button class="btn-sidebar"><i class="fa-solid fa-file-alt"></i><span>Docu</span></button>
+            <button class="btn-sidebar"><i class="fa-solid fa-users"></i><span>Clie</span></button>
+            <button class="btn-sidebar" id="configButton">
+                <i class="fa-solid fa-cog"></i><span>Conf</span>
+            </button>
+        </aside>
+
+        <section>
+            <div id="filterSection" class="filter-section">
+                <h2>Buscar Registros</h2>
+                <label for="searchTipo">Tipo de Solicitud:</label>
+                <select id="searchTipo">
+                    <option value="" disabled selected>Seleccione una opción</option>
+                    <option value="">Seleccionar Tipo</option>
+                </select>
+                <label for="searchNombre">Nombre:</label>
+                <select id="searchNombre">
+                    <option value="">Seleccionar Nombre</option>
+                </select>
+                <label for="searchTelefono">Teléfono:</label>
+                <select id="searchTelefono">
+                    <option value="">Seleccionar Teléfono</option>
+                </select>
+            </div>
+
+            <div id="tableSection" class="table-section">
+                <table id="formTable">
+                    <thead>
+                        <tr>
+                            <th>Solicitud</th>
+                            <th>Nombre</th>
+                            <th>Teléfono</th>
+                            <th>Ver</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- Datos de la tabla -->
+                    </tbody>
+                </table>
+            </div>
+
+            <div id="detailsContainer" class="details-section">
+                <h2>Detalles del Registro</h2>
+                <div class="action-buttons">
+                    <button id="prevButton">Anterior</button>
+                    <button id="nextButton">Siguiente</button>
+                </div>
+                <table id="detailsTable">
+                    <tbody>
+                        <!-- Detalles del registro -->
+                    </tbody>
+                </table>
+                <div class="action-buttons">
+                    <button id="backButton" class="back-button">Regresar</button>
+                    <button id="deleteButton">Eliminar</button>
+                    <button id="downloadButton">Descargar</button>
+                </div>
+            </div>
+        </section>
+
+        <section class="munus">
+            <button class="menu-btn" id="menuBtn">
+                <span class="menu-icon">&#9776;</span> <!-- Icono de menú hamburguesa -->
+            </button>
+            <button class="btn-sidebar" onclick="window.location.href='../index.html'"><i class="fa-solid fa-house"></i><span>Inicio</span></button>
+            <button class="btn-filter" id="filterToggle"><i class="fa-solid fa-magnifying-glass"></i></button>
+        </section>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const filterSection = document.getElementById('filterSection');
+            const filterToggle = document.getElementById('filterToggle');
+            const menuBtn = document.getElementById('menuBtn');
+            const sidebar = document.querySelector('.sidebar');
+            const header = document.querySelector('header');
+            const detailsContainer = document.getElementById('detailsContainer');
+            const filterSectionDisplay = document.getElementById('filterSection').style.display;
+            const tableSection = document.getElementById('tableSection');
+
+            filterToggle.addEventListener('click', function () {
+                if (filterSection.style.display === 'none' || filterSection.style.display === '') {
+                    filterSection.style.display = 'block';
+                } else {
+                    filterSection.style.display = 'none';
+                }
+            });
+
+            menuBtn.addEventListener('click', function () {
+                sidebar.classList.toggle('show');
+                sidebar.classList.toggle('hide');
+            });
+
+            document.getElementById('backButton').onclick = () => {
+                detailsContainer.style.display = 'none';
+                filterSection.style.display = 'block';
+                tableSection.style.display = 'block';
+                header.style.display = 'flex'; // Asegúrate de que el display sea 'flex' para el header
+            };
+
+            document.getElementById('deleteButton').onclick = async () => {
+                if (confirm("¿Estás seguro de que quieres eliminar este registro?")) {
+                    try {
+                        await deleteDoc(doc(db, 'formularios', currentDocId));
+                        alert("Registro eliminado exitosamente");
+                        loadFormData();
+                        detailsContainer.style.display = 'none';
+                        filterSection.style.display = 'block';
+                        tableSection.style.display = 'block';
+                        header.style.display = 'flex'; // Asegúrate de que el display sea 'flex' para el header
+                    } catch (error) {
+                        console.error("Error eliminando el registro: ", error);
+                    }
+                }
+            };
+        });
+    </script>
+</body>
+</html>
